@@ -1,53 +1,110 @@
-var status = 0;
-var time = 0;
+function Stopwatch() {
+	var timer = document.getElementById('timer');
+	var time = 0;
+	var interval;
+	var offset;
 
-function start(){
-	status = 1;
-	document.getElementById('startButton').disabled = true;
-	timer();
-}
-function stop(){
-	status = 0;
-	document.getElementById('startButton').disabled = false;
-}
-function reset(){
-	status = 0;
-	timer = 0;
-	document.getElementById('startButton').disabled = false;
-	document.getElementById('timer--box').innerHTML = '00:00:00'
-}
-function timer(){
-	if(status == 1){
-		setTimeout(function(){
-			time++;
-			var hou = Math.floor(time/100/3600);
-			var min = Math.floor(time/100/60);
-			var sec = Math.floor(time/100);
-			var mSec = time % 100 *10;
-			if(hou < 10){
-				hou = '0' + hou;
-			}
-			if(min < 10){
-				min = '0' + min;
-			}
-			if(sec >= 60){
-				sec = sec % 60;
-			}
-			if(sec < 10){
-				sec = '0' + sec;
-			}
-			if(mSec >= 100){
-				mSec = mSec % 1000;
-			}
-			if(mSec < 100){
-				mSec = '0' + mSec;
-			}
+	function update() {
+		time += delta();
+		var formateTime = timeFormate(time);
+		console.log(formateTime);
+	};
+	function delta() {
+		var now = Date.now();
+		var timePassed = now - offset;
+		offset = now;
+		return timePassed;
+	};
+	function timeFormate(timeInMillisec) {
+		var time = new Date(timeInMillisec);
+		var hours = time.getHours().toString();
+		var minutes = time.getMinutes().toString();
+		var seconds = time.getSeconds().toString();
+		var millsec = time.getMilliseconds().toString();
+		if(hours.length < 2) {
+			hours = '0' + hours;
+		}
+		if(minutes.length < 2) {
+			minutes = '0' + minutes; 
+		}
+		if(seconds.length < 2) {
+			seconds = '0' + seconds;
+		}
+		while(millsec.length < 3){
+			millsec = '0' + millsec;
+		}
+		return  minutes + ' : ' + hours + ' : ' + seconds + ' : ' + millsec;
+	};
 
-			document.getElementById('timer--box').innerHTML = hou + ':' +min + ':' + sec + ':' + mSec;
-			timer();
-		}, 10)
-	}
-}
+	this.isOn = false;
+	this.start = function() {
+		if(!this.isOn) {
+			interval = setInterval(update ,10);
+			offset = Date.now();
+			this.isOn = true;
+		}
+	};
+	this.stop =	function() {
+		if(this.isOn) {
+			clearInterval(interval);
+			interval = null;
+			this.isOn = false;
+		}
+	};
+	this.reset = function() {
+		time = 0;
+	};
+};
+
+
+
+// first test
+
+
+// var status = 0;
+// var time = 0;
+
+// function start(){
+// 	status = 1;
+// 	document.getElementById('startButton').disabled = true;
+// 	timer();
+// }
+// function stop(){
+// 	status = 0;
+// 	document.getElementById('startButton').disabled = false;
+// }
+// function reset(){
+// 	status = 0;
+// 	timer = 0;
+// 	document.getElementById('startButton').disabled = false;
+// 	document.getElementById('timer--box').innerHTML = '00:00:00'
+// }
+// function timer(){
+// 	if(status == 1){
+// 		setTimeout(function(){
+// 			time++;
+// 			var hou = Math.floor(time/100/3600);
+// 			var min = Math.floor(time/100/60);
+// 			var sec = Math.floor(time/100);
+// 			var mSec = time % 100;
+// 			if(hou < 10){
+// 				hou = '0' + hou;
+// 			}
+// 			if(min < 10){
+// 				min = '0' + min;
+// 			}
+// 			if(sec >= 60){
+// 				sec = sec % 60;
+// 			}
+// 			if(sec < 10){
+// 				sec = '0' + sec;
+// 			}
+
+// 			document.getElementById('timer--box').innerHTML = hou + ':' +min + ':' + sec + ':' + mSec;
+// 			timer();
+// 		}, 10)
+// 	}
+// }
 
 
 

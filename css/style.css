@@ -25,12 +25,12 @@
 .buttons--start,
 .buttons--stop,
 .buttons--reset{
-	width: 163px;
 	border: 5px solid #000;
 	border-radius: 26px;
 	font-size: 55px;
 	font-weight: bold;
-	font-family: Arial, sans-serif;;
+	font-family: Arial, sans-serif;
+	width: 195px;
 }
 .buttons--start{
 	background: #14a714;
