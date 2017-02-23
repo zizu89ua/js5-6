@@ -33,7 +33,7 @@ function Stopwatch() {
 		while(millsec.length < 3){
 			millsec = '0' + millsec;
 		}
-		return  minutes + ' : ' + hours + ' : ' + seconds + ' : ' + millsec;
+		return hours + ' : ' + minutes + ' : ' + seconds + ' : ' + millsec;
 	};
 
 	this.isOn = false;
