@@ -1,5 +1,19 @@
-function Stopwatch() {
-	var timer = document.getElementById('timer');
+var timer = document.getElementById('timer');
+var startBut = document.getElementById('start-button');
+var resetBut = document.getElementById('reset-button');
+var milsec = document.getElementsByClassName('milsec');
+milsec.style.fontSize = '10px';
+var watch = new Stopwatch(timer);
+
+startBut.addEventListener("click", function() {
+	if(watch.isOn){
+		watch.stop();
+	} else {
+		watch.start();
+	}
+});
+
+function Stopwatch(elem) {
 	var time = 0;
 	var interval;
 	var offset;
@@ -7,7 +21,7 @@ function Stopwatch() {
 	function update() {
 		time += delta();
 		var formateTime = timeFormate(time);
-		console.log(formateTime);
+		elem.textContent = formateTime;
 	};
 	function delta() {
 		var now = Date.now();
@@ -17,12 +31,12 @@ function Stopwatch() {
 	};
 	function timeFormate(timeInMillisec) {
 		var time = new Date(timeInMillisec);
-		var hours = time.getHours().toString();
-		var minutes = time.getMinutes().toString();
-		var seconds = time.getSeconds().toString();
+		var hours = time.getUTCHours().toString();
+        var minutes = time.getUTCMinutes().toString();
+        var seconds = time.getUTCSeconds().toString();
 		var millsec = time.getMilliseconds().toString();
 		if(hours.length < 2) {
-			hours = '0' + hours;
+			hours = '0' + hours; 
 		}
 		if(minutes.length < 2) {
 			minutes = '0' + minutes; 

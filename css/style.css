@@ -2,6 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
+.milsec{
+	font-size: 15px;
+}
 .wrap{
 	margin: 0 auto;
 	width: 600px;
