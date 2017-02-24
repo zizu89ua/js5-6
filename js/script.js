@@ -1,7 +1,8 @@
 var timer = document.getElementById('timer');
 var startBut = document.getElementById('start-button');
 var resetBut = document.getElementById('reset-button');
-
+var splitBut = document.getElementById('split-button');
+var box = document.getElementById('split-timer');
 var watch = new Stopwatch(timer);
 
 startBut.addEventListener("click", function() {
@@ -22,6 +23,16 @@ resetBut.addEventListener('click', function(){
 })
     
 });
+
+splitBut.addEventListener('click', function(){
+		box = document.getElementById('timer');
+		a = document.getElementById('split-timer');
+		
+	 	a.innerHTML += 'split ' + box.innerHTML + '<br>';
+	 	a.style.fontSize = '30px'; 
+	 	a.style.marginTop = '30px';
+});
+
 function Stopwatch(elem) {
 	var time = 0;
 	var interval;
@@ -46,7 +57,7 @@ function Stopwatch(elem) {
 		var hours = time.getUTCHours().toString();
         var minutes = time.getUTCMinutes().toString();
         var seconds = time.getUTCSeconds().toString();
-		var millsec = time.getMilliseconds().toString();
+		 this.millsec = time.getMilliseconds().toString();
 		
 		if(hours.length < 2) {
 			hours = '0' + hours; 
@@ -81,6 +92,13 @@ function Stopwatch(elem) {
 			time = 0;
 			update();
 	};
+	// this.split = function() {
+	// 	var a;
+	// 	for(var i = 0; i++;){
+	// 		a.document.createTextNode((i+1) + 'split')
+			
+	// 	}
+	// };
 };
 
 

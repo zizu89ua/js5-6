@@ -24,7 +24,8 @@
 	margin-top: 30px;
 }
 #start-button,
-#reset-button{
+#reset-button,
+#split-button{
 	border: 5px solid #000;
 	border-radius: 26px;
 	font-size: 55px;
@@ -36,7 +37,16 @@
 #start-button{
 	background: linear-gradient(135deg, rgba(20,167,20,1) 0%, rgba(20,167,20,1) 42%, rgba(20,167,20,1) 54%, rgba(18,146,18,1) 55%, rgba(21,173,21,1) 100%);
 }
+#start-button:hover{
+	opacity: 0.7;
+}
 #reset-button{
 	background: linear-gradient(135deg, rgba(164,23,23,1) 0%, rgba(164,23,23,1) 51%, rgba(164,23,23,1) 52%, rgba(132,13,13,1) 55%, rgba(156,20,20,1) 100%);
 	float: right;
+}
+#reset-button:hover{
+	opacity: 0.7;
+}
+#split-button{
+	background: #ccc; 
 }
