@@ -2,45 +2,41 @@
 	margin: 0;
 	padding: 0;
 }
-.milsec{
-	font-size: 15px;
-}
+
 .wrap{
 	margin: 0 auto;
 	width: 600px;
 	font-family: Arial, sans-serif;
 }
-.timer{
+#timer{
 	border: 5px solid #000;
 	border-radius: 20px;
 	background: #e1e3ff;
 	text-align: center;
+	font-size: 72px;
+	margin-bottom: 20px;;
 }
-#timer--box{
-	font-size: 100px;
-}
+
 .timer--msec{
 	font-size: 20px;
 }
 .buttons{
 	margin-top: 30px;
 }
-.buttons--start,
-.buttons--stop,
-.buttons--reset{
+#start-button,
+#reset-button{
 	border: 5px solid #000;
 	border-radius: 26px;
 	font-size: 55px;
 	font-weight: bold;
 	font-family: Arial, sans-serif;
 	width: 195px;
+	outline: none;;
 }
-.buttons--start{
-	background: #14a714;
+#start-button{
+	background: linear-gradient(135deg, rgba(20,167,20,1) 0%, rgba(20,167,20,1) 42%, rgba(20,167,20,1) 54%, rgba(18,146,18,1) 55%, rgba(21,173,21,1) 100%);
 }
-.buttons--reset{
-	background: #1760b7;
-}
-.buttons--stop{
-	background: #a41717; 
+#reset-button{
+	background: linear-gradient(135deg, rgba(164,23,23,1) 0%, rgba(164,23,23,1) 51%, rgba(164,23,23,1) 52%, rgba(132,13,13,1) 55%, rgba(156,20,20,1) 100%);
+	float: right;
 }
